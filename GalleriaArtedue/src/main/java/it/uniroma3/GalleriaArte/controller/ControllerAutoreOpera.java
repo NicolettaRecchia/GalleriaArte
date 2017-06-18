@@ -106,5 +106,5 @@ public class ControllerAutoreOpera {
 	public String login(){
 		return "login";
 	}
-
+//prova ciao
 }
