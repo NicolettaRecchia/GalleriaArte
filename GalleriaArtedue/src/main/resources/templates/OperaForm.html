@@ -9,8 +9,17 @@
 <body>
 	<div class="container">
 		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+		<form class="form-horizontal" th:action="@{/logout}" method="post">
+			<div class="form-group">
+				<div class="col-sm-10">
+					<h2>Inserisci Opera</h2>
+				</div>
+				<div class="col-sm-2" style="padding-top: 30px;">
+					<input type="submit" value="Sign Out" />
+				</div>
+			</div>
+		</form>
 
-		<h2>Inserisci Opera</h2>
 		<div>
 			<form class="form-horizontal" th:object="${opera}"
 				th:action="@{/opera}" method="post">
@@ -23,7 +32,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Anno Realizzazione:</label>
+					<label class="col-sm-2 control-label">Anno di
+						Realizzazione:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control"
 							th:field="*{annoRealizzazione}" />

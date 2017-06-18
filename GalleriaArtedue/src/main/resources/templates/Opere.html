@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
 
 <title>Galleria d'arte</title>
@@ -10,27 +11,39 @@
 	<div class="container">
 		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 		<div th:if="${not #lists.isEmpty(opere)}">
-			<h2>Lista Opere</h2>
+			<form th:action="@{/logout}" method="post">
+				<div class="col-sm-10">
+					<h2>Lista Opere</h2>
+				</div>
+				<div class="col-sm-2" style="padding-top: 30px;">
+					<span sec:authorize="isAuthenticated()"> <input
+						type="submit" value="Sign Out" />
+					</span>
+				</div>
+			</form>
 			<table class="table table-striped">
 				<tr>
 					<th>Id</th>
-					<th>titolo</th>
-					<th>tecnica</th>
-					<th>annoRealizzazione</th>
-					<th>dimensione</th>
-					<th>Modifica</th>
-					<th>Cancella</th>
+					<th>Titolo</th>
+					<th>Tecnica</th>
+					<th>Anno di Realizzazione</th>
+					<th>Dimensione</th>
+					<th sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">Visualizza</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN')">Modifica</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN')">Cancella</th>
 				</tr>
 				<tr th:each="opera : ${opere}">
 					<td th:text="${opera.id}"><a href="/opera/${opera.id}">Id</a></td>
-					<td th:text="${opera.titolo}">titolo</td>
-					<td th:text="${opera.tecnica}">tecnica</td>
-					<td th:text="${opera.annoRealizzazione}">annoRealizzazione</td>
-					<td th:text="${opera.dimensione}">dimensione</td>
-
-
-					<td><a th:href="${'/opera/edit/' + opera.id}">Modifica</a></td>
-					<td><a th:href="${'/opera/delete/' + opera.id}">Cancella</a></td>
+					<td th:text="${opera.titolo}">Titolo</td>
+					<td th:text="${opera.tecnica}">Tecnica</td>
+					<td th:text="${opera.annoRealizzazione}">Anno di Realizzazione</td>
+					<td th:text="${opera.dimensione}">Dimensione</td>
+					<td sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a
+						th:href="${'/opera/show/' + opera.id}">Visualizza</a></td>
+					<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+						th:href="${'/opera/edit/' + opera.id}">Modifica</a></td>
+					<td sec:authorize="hasRole('ROLE_ADMIN')"><a
+						th:href="${'/opera/delete/' + opera.id}">Cancella</a></td>
 				</tr>
 			</table>
 

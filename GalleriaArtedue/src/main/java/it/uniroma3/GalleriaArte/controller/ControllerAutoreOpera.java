@@ -102,4 +102,9 @@ public class ControllerAutoreOpera {
 		return "redirect:/opere";
 	}
 
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(){
+		return "login";
+	}
+
 }
