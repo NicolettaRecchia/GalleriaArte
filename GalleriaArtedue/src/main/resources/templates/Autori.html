@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Galleria d'arte</title>
+
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+		<div th:if="${not #lists.isEmpty(autori)}">
+			<h2>Lista Artisti</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>Id</th>
+					<th>nome</th>
+					<th>cognome</th>
+					<th>datanascita</th>
+					<th>datamorte</th>
+					<th>nazionalita</th>
+					<th>Modifica</th>
+					<th>Cancella</th>
+				</tr>
+				<tr th:each="autore : ${autori}">
+					<td th:text="${autore.id}"><a href="/autore/${autore.id}">Id</a></td>
+					<td th:text="${autore.nome}">nome</td>
+					<td th:text="${autore.cognome}">cognome</td>
+					<td th:text="${autore.dataNascita}">datanascita</td>
+					<td th:text="${autore.dataMorte}">datamorte</td>
+					<td th:text="${autore.nazionalita}">nazionalita</td>
+
+
+					<td><a th:href="${'/autore/edit/' + autore.id}">Modifica</a></td>
+					<td><a th:href="${'/autore/delete/' + autore.id}">Cancella</a></td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+
+</body>
+</html>
