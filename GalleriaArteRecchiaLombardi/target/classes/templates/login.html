@@ -17,14 +17,15 @@
 		<form th:action="@{/login}" method="post">
 
 			<table class="table table-striped">
+
 				<tr>
 					<td><label> User Name : <input type="text"
-							name="username" />
+							name="username" required="required" />
 					</label></td>
 				</tr>
 				<tr>
 					<td><label> Password : <input type="password"
-							name="password" />
+							name="password" required="required" />
 					</label></td>
 				</tr>
 				<tr>

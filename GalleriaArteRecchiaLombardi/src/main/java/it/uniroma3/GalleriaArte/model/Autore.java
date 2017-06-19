@@ -13,23 +13,23 @@ import javax.persistence.Version;
 
 @Entity
 public class Autore {
+	
 
-
-
+   
 	@Version
 	private Integer version;
-
-	@Override
-	public String toString(){
-		return this.nome;
-	}
-	@Id
+	
+   @Override
+   public String toString(){
+	   return this.nome + " " + this.cognome;
+   }
+   @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-
+	
 	private String cognome;
-
+	
 	private String dataNascita;
 
 	private String dataMorte;
@@ -96,6 +96,6 @@ public class Autore {
 		this.version = version;
 	}
 
-
-
+	
+	
 }

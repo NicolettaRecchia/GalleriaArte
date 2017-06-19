@@ -11,25 +11,26 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
+	
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity
-		.authorizeRequests().antMatchers("/","/autori","/autore/show/*","/opere","/opera/show/*").permitAll()
-		.anyRequest().authenticated()
-		.and()
-		.formLogin().loginPage("/login").permitAll()
-		.and()
-		.logout().permitAll();
+	    httpSecurity
+	            .authorizeRequests().antMatchers("/","/autori","/autore/show/*","/opere","/opera/show/*").permitAll()
+	            .anyRequest().authenticated()
+	            .and()
+	            .formLogin().loginPage("/login").permitAll()
+	            .and()
+	            .logout().permitAll();
 
-		httpSecurity.csrf().disable();
-		httpSecurity.headers().frameOptions().disable();
+	   httpSecurity.csrf().disable();
+	   httpSecurity.headers().frameOptions().disable();
 	}
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-		.inMemoryAuthentication()
-		.withUser("admin").password("admin").roles("ADMIN")
-		.and().withUser("user").password("user").roles("USER");;
-	}
-}
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .withUser("admin").password("admin").roles("ADMIN")
+                .and().withUser("user").password("user").roles("USER");;
+    }
+    }
+

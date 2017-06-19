@@ -103,4 +103,4 @@ public class Opera {
 		this.autore=autore;
 	}
 
-}
+}	    

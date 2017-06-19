@@ -27,9 +27,10 @@ public class OperaService {
 	public void remove(final Long id) {
 		this.operaRepository.delete(id);
 	}
-
-	public Opera getOperaById(Long id) {
-
+	
+public Opera getOperaById(Long id) {
+		
 		return operaRepository.findOne(id);
-	}
 }
+}
+
