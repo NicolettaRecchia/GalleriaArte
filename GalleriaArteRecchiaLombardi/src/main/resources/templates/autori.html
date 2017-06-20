@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
 
-<title>Galleria d'arte</title>
+<title>Muse Gallery</title>
 
 <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 </head>
@@ -12,12 +12,10 @@
 		<div th:if="${not #lists.isEmpty(autori)}">
 		<form th:action="@{/logout}" method="post">
 		
-            <div class="col-sm-10"><h2>Lista Autori</h2></div>
-            <div class="col-sm-2" style="padding-top: 30px;">
-                     <span sec:authorize="isAuthenticated()">
-                    <input type="submit" value="Sign Out"/>
-                               </span>
+            <div class="col-sm-10">
+            <h2>Lista Artisti</h2>
             </div>
+    
 			</form>
 			<table class="table table-striped">
 				<tr>
@@ -27,8 +25,7 @@
 					<th>Data di Nascita</th>
 					<th>Data di Morte</th>
 					<th>Nazionalita'</th>
-					<th sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">Visualizza</th>
-                <th sec:authorize="hasRole('ROLE_ADMIN')">Modifica</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN')">Modifica</th>
                 <th sec:authorize="hasRole('ROLE_ADMIN')">Cancella</th>
 				</tr>
 				<tr th:each="autore : ${autori}">
@@ -38,7 +35,7 @@
 					<td th:text="${autore.dataNascita}">Data di Nascita</td>
 					<td th:text="${autore.dataMorte}">Data di Morte</td>
 					<td th:text="${autore.nazionalita}">Nazionalita'</td>
-					<td sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a th:href="${'/autore/show/' + autore.id}">Visualizza</a></td>
+					
 					<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="${'/autore/edit/' + autore.id}">Modifica</a></td>
 					<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="${'/autore/delete/' + autore.id}">Cancella</a></td>
 					
@@ -58,4 +55,3 @@
 
 
     
-          

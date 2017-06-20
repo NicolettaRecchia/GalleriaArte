@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
     <link rel="stylesheet" type="text/css" href="../static/css/guru.css" />
+  
 </head>
 <body>
 
@@ -16,8 +17,8 @@
 							<li><a href="#" th:href="@{/autore/new}" sec:authorize="hasRole('ROLE_ADMIN')">Crea Autore</a></li>
 							<li><a href="#" th:href="@{/opere}">Opere</a></li>
 							<li><a href="#" th:href="@{/opera/new}" sec:authorize="hasRole('ROLE_ADMIN')"> Crea Opera</a></li>
-                        
-                        <li><a href="#" th:href="@{/login}">Sign In</a></li>
+                           <li><a href="#" th:href="@{/login}">Accedi</a></li>
+                           <li><a href="#" th:href="@{/logout}">Esci</a></li>
                     </ul>
                 </div>
             </div>
@@ -28,13 +29,13 @@
         <div class="jumbotron">
             <div class="row text-center">
                 <div class="">
-                    <h2>Galleria d'Arte</h2>
+                    <h2>Muse Gallery</h2>
 
                    
                 </div>
             </div>
             <div class="row text-center">
-                <img src="http://portalegiovani.prato.it/flex/images/2/b/f/D.ff86f963601a89a3bb27/maxresdefault.jpg" width="1000"
+                <img src="http://portalegiovani.prato.it/flex/images/2/b/f/D.ff86f963601a89a3bb27/maxresdefault.jpg" width="1080"
                      />
             </div>
         </div>
@@ -46,6 +47,4 @@
 
 
 
-                   
-
-        
+    

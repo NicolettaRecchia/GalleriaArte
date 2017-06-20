@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
 
-<title>Galleria d'arte</title>
+<title>Muse Gallery</title>
 
 <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 </head>
@@ -11,12 +11,11 @@
 		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 		<div th:if="${not #lists.isEmpty(opere)}">
 		<form th:action="@{/logout}" method="post">
-			<div class="col-sm-10"><h2>Lista Opere</h2></div>
-            <div class="col-sm-2" style="padding-top: 30px;">
-                     <span sec:authorize="isAuthenticated()">
-                    <input type="submit" value="Sign Out"/>
-                               </span>
-            </div>
+			<div class="col-sm-10">
+			<h2>Lista Opere</h2>
+			</div>
+           
+            
 			</form>
 			<table class="table table-striped">
 				<tr>
@@ -25,8 +24,7 @@
 					<th>Tecnica</th>
 					<th>Anno di Realizzazione</th>
 					<th>Dimensione</th>
-					<th>Autore</th>
-					<th sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">Visualizza</th>
+					
                 <th sec:authorize="hasRole('ROLE_ADMIN')">Modifica</th>
                 <th sec:authorize="hasRole('ROLE_ADMIN')">Cancella</th>
 				</tr>
@@ -37,7 +35,7 @@
 					<td th:text="${opera.annoRealizzazione}">Anno di Realizzazione</td>
 					<td th:text="${opera.dimensione}">Dimensione</td>
 					<td th:text="${opera.autore}">Autore</td>
-					<td sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a th:href="${'/opera/show/' + opera.id}">Visualizza</a></td>
+					
 					<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="${'/opera/edit/' + opera.id}">Modifica</a></td>
 					<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="${'/opera/delete/' + opera.id}">Cancella</a></td>
 				</tr>
@@ -50,11 +48,6 @@
 </html>
 
 
-
-		
-		
-          
-				
 
     
           

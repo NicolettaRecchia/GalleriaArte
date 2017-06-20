@@ -110,5 +110,8 @@ public class ControllerOperaAutore {
 	public String login(){
 	     return "login";
 	}
-
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(){
+		return "index";
+	}
 }
